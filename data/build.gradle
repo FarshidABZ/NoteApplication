@@ -26,6 +26,11 @@ android {
         exclude "**/attach_hotspot_windows.dll"
         exclude("META-INF/*.kotlin_module")
     }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
 }
 
 dependencies {
@@ -46,14 +51,11 @@ dependencies {
 
     // Testing
     testImplementation test.junit
-    testImplementation test.mockk
-    testImplementation test.truth
-    testImplementation test.turbine
-    testImplementation test.coroutines
-
     androidTestImplementation test.truth
     androidTestImplementation test.turbine
     androidTestImplementation test.coroutines
+    androidTestImplementation test.mockito
+    androidTestImplementation test.mock_server
     androidTestImplementation test.android_test
     androidTestImplementation test.androidx_test_runner
     androidTestImplementation test.arch_core
