@@ -39,6 +39,11 @@ dependencies {
     implementation hilt.hilt
     kapt hilt.compiler
 
+    // Room
+    api room.room
+    implementation room.room_ktx
+    kapt room.room_compiler
+
     // Testing
     testImplementation test.junit
     testImplementation test.mockk
