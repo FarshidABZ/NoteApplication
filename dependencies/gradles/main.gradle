@@ -1,0 +1,3 @@
+apply from: "${rootProject.projectDir}/dependencies/gradles/dependency.gradle"
+apply from: "${rootProject.projectDir}/dependencies/gradles/config.gradle"
+apply from: "${rootProject.projectDir}/dependencies/gradles/common.gradle"
