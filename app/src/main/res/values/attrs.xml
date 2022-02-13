@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ******* TextView ******** -->
+    <attr name="titleMedium" format="reference" />
+    <attr name="noteTitle" format="reference" />
+    <attr name="noteBody" format="reference" />
+
+</resources>

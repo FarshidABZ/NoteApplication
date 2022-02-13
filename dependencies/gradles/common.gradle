@@ -13,6 +13,17 @@ ext.commonConfig = {
     buildFeatures {
         dataBinding true
     }
+
+    packagingOptions {
+        exclude 'META-INF/*'
+        exclude "**/attach_hotspot_windows.dll"
+        exclude("META-INF/*.kotlin_module")
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
 }
 
 ext.defaultConfigExt = {
