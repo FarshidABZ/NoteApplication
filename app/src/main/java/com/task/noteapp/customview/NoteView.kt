@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
-import com.bumptech.glide.Glide
 import com.task.noteapp.databinding.NoteViewBinding
 import com.task.noteapp.model.NoteUIModel
+import com.task.noteapp.util.loadImageOrGone
 import com.task.noteapp.util.toDD_MMM
 
 class NoteView : ConstraintLayout {
@@ -66,14 +66,7 @@ class NoteView : ConstraintLayout {
 
     fun setImageUrl(url: String?) {
         with(binding.noteImageView) {
-            url?.let {
-                Glide.with(context)
-                    .load(it)
-                    .into(this)
-
-            } ?: run {
-                isVisible = false
-            }
+            this.loadImageOrGone(url)
         }
     }
 }

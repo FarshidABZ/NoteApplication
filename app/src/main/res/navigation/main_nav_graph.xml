@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/noteListFragment">
+    app:startDestination="@id/noteFragment">
 
     <fragment
         android:id="@+id/noteListFragment"
         android:name="com.task.noteapp.ui.notelist.NoteListFragment"
         android:label="NoteListFragment"
         tools:layout="@layout/fragment_note_list" />
+
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.task.noteapp.ui.note.NoteFragment"
+        android:label="NoteFragment"
+        tools:layout="@layout/fragment_note" />
 
 </navigation>

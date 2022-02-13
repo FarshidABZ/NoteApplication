@@ -9,6 +9,7 @@
     <dimen name="spacing_3">12dp</dimen>
     <dimen name="spacing_4">16dp</dimen>
     <dimen name="spacing_6">24dp</dimen>
+    <dimen name="spacing_8">32dp</dimen>
 
     <dimen name="empty_state_padding_bottom">96dp</dimen>
     <dimen name="fab_size">64dp</dimen>

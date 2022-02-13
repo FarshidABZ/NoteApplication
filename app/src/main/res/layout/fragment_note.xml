@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.task.noteapp.ui.note.NoteViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/generic_toolbar"
+            layout="@layout/generic_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/noteImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrlOrGone="@{viewModel.note.imageUrl}"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/noteImageView">
+
+                    <EditText
+                        style="@style/NoteTitleHeavyTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/title_hint"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapSentences|text"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        android:text="@{viewModel.note.title}"
+                        app:layout_constraintTop_toBottomOf="@+id/generic_toolbar" />
+
+                    <TextView
+                        style="@style/NoteBodyTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_4"
+                        app:setLastEditedDate="@{viewModel.note.lastEditedTime}"
+                        tools:text="Last Edit: January 21, 18:40" />
+
+                    <EditText
+                        android:id="@+id/bodyEditText"
+                        style="@style/NoteBodyTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/spacing_8"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="@string/note_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapSentences|text"
+                        android:lineSpacingExtra="@dimen/spacing_2"
+                        android:paddingBottom="@dimen/spacing_4"
+                        android:text="@{viewModel.note.description}"
+                        app:layout_constraintTop_toBottomOf="@+id/generic_toolbar" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

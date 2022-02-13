@@ -9,7 +9,9 @@ data class NoteUIModel(
     val createdTime: Long,
     val lastEditedTime: Long? = null,
     val imageUrl: String? = null
-)
+) {
+    fun toDomain() = NoteModel(id, title, description, createdTime, lastEditedTime, imageUrl)
+}
 
 fun NoteModel.toUIModel() = NoteUIModel(
     id,

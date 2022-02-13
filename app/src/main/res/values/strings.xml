@@ -8,5 +8,8 @@
     <string name="no_note_availabe">There is no note available!</string>
     <string name="tap_plus_to_new_note">Tap on “+” to add new note.</string>
     <string name="add_new_note">add new note</string>
+    <string name="title_hint">Title</string>
+    <string name="note_hint">Note here…</string>
+    <string name="more">more</string>
 
 </resources>

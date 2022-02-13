@@ -5,7 +5,8 @@
     <color name="accentColor">#5B57BC</color>
     <color name="secondaryAccent">#FBB338</color>
     <color name="primaryTextColor">#FFFFFF</color>
-    <color name="secondaryTextColor">#747180</color>
+    <color name="secondaryTextColor">#7E7B8A</color>
+    <color name="textHintColor">#B9B6C3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

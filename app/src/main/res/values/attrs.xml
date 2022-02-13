@@ -3,7 +3,9 @@
 
     <!-- ******* TextView ******** -->
     <attr name="titleMedium" format="reference" />
+    <attr name="titleHeavy" format="reference" />
     <attr name="noteTitle" format="reference" />
+    <attr name="noteTitleHeavy" format="reference" />
     <attr name="noteBody" format="reference" />
 
 </resources>

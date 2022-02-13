@@ -9,11 +9,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_file_plus.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_more_vert.xml" value="0.199" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3074074074074074" />
+        <entry key="app/src/main/res/layout/bottom_sheet_menu.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_note.xml" value="0.3277777777777778" />
         <entry key="app/src/main/res/layout/fragment_note_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/generic_toolbar.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/layout/item_note.xml" value="0.25" />
         <entry key="app/src/main/res/layout/note_view.xml" value="0.2676470588235294" />
+        <entry key="app/src/main/res/menu/note_menu.xml" value="0.3703125" />
       </map>
     </option>
   </component>
