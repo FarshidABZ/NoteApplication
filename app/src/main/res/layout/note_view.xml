@@ -6,11 +6,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_1"
+        android:layout_margin="@dimen/spacing_2"
         app:cardBackgroundColor="@color/secondaryColor"
         app:cardCornerRadius="@dimen/card_corner_radius"
-        app:contentPaddingBottom="@dimen/spacing_2"
-        tools:layout_width="200dp">
+        app:contentPaddingBottom="@dimen/spacing_2">
 
         <LinearLayout
             android:layout_width="match_parent"

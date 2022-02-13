@@ -52,6 +52,9 @@ dependencies {
     implementation glide.glide
     kapt glide.glide_compiler
 
+    // Lottie
+    implementation lottie.lottie
+
     // Test
     testImplementation test.coroutines
     testImplementation test.android_test

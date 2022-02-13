@@ -2,4 +2,11 @@
     <string name="app_name">NoteApp</string>
     <string name="note_image">note image</string>
     <string name="edited">Edited</string>
+
+    <string name="notes">Notes</string>
+
+    <string name="no_note_availabe">There is no note available!</string>
+    <string name="tap_plus_to_new_note">Tap on “+” to add new note.</string>
+    <string name="add_new_note">add new note</string>
+
 </resources>

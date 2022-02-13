@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NoteApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.NoteApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/secondaryColor</item>
@@ -19,7 +19,6 @@
         <item name="noteBody">@style/NoteBodyTextStyle</item>
 
     </style>
-
 
     <!--******  Text Style   ******-->
 
