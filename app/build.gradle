@@ -58,6 +58,7 @@ dependencies {
     // Test
     testImplementation test.coroutines
     testImplementation test.android_test
+    testImplementation test.arch_core
     testImplementation test.androidx_test_runner
     testImplementation test.mockk
     testImplementation test.truth

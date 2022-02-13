@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.task.noteapp.ui.notelist.NoteListViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,13 +26,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/noteListRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:padding="@dimen/spacing_2"
+                app:items="@{viewModel.noteList}"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:spanCount="2"
-                tools:itemCount="10"
-                tools:listitem="@layout/note_view" />
+                tools:itemCount="3"
+                tools:listitem="@layout/item_note" />
 
             <LinearLayout
                 android:id="@+id/emptyStateView"
@@ -34,6 +41,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/empty_state_padding_bottom"
+                app:isVisible="@{viewModel.isEmpty}"
                 app:layout_constraintBaseline_toBottomOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -44,6 +52,7 @@
                     android:layout_height="360dp"
                     app:lottie_autoPlay="false"
                     app:lottie_loop="false"
+                    app:lottie_playAnimation="@{viewModel.isEmpty}"
                     app:lottie_rawRes="@raw/empty_page" />
 
                 <com.task.noteapp.customview.BodyTextViewTextView
@@ -62,6 +71,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addNewNoteFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

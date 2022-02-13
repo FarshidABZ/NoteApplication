@@ -35,4 +35,14 @@
 
     <style name="ToolbarTextStyle" parent="TextAppearance.MaterialComponents.Headline6" />
 
+
+    <!--******  Note Image Style   ******-->
+
+    <style name="CardRoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
 </resources>

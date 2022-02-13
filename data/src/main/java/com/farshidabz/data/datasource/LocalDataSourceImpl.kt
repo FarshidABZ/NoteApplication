@@ -1,7 +1,6 @@
 package com.farshidabz.data.datasource
 
 import com.farshidabz.data.datasource.dao.NoteDao
-import com.farshidabz.data.di.IoDispatcher
 import com.farshidabz.data.entity.NoteEntity
 import com.farshidabz.data.entity.toDomain
 import com.farshidabz.domain.datasource.LocalDataSource
@@ -13,7 +12,7 @@ import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor(
     private val dao: NoteDao,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val dispatcher: CoroutineDispatcher,
 ) : LocalDataSource {
 
     override suspend fun saveNote(note: NoteModel) = withContext(dispatcher) {

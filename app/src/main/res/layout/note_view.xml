@@ -6,7 +6,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_2"
         app:cardBackgroundColor="@color/secondaryColor"
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:contentPaddingBottom="@dimen/spacing_2">
@@ -16,9 +15,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/noteImageView"
+                app:shapeAppearanceOverlay="@style/CardRoundedImageView"
                 android:layout_width="match_parent"
+                android:scaleType="centerCrop"
                 android:layout_height="@dimen/note_image_height"
                 android:contentDescription="@string/note_image"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +37,8 @@
                     android:id="@+id/noteTitleTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Title" />
 
@@ -44,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_1"
+                    android:inputType="text"
                     android:maxLines="2"
                     android:text="@tools:sample/lorem"
                     app:layout_constraintTop_toBottomOf="@+id/noteTitleTextView" />
