@@ -21,6 +21,10 @@
 
     </style>
 
+    <style name="MyBottomSheetMenuStyle" parent="@style/Theme.BottomSheetMenuDialog">
+        <item name="backgroundColor">@color/primaryColor</item>
+    </style>
+
     <!--******  Text Style   ******-->
 
     <style name="NoteTitleTextStyle">

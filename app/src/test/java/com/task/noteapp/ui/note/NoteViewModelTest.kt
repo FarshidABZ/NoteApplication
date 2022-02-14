@@ -57,24 +57,20 @@ class NoteViewModelTest {
     }
 
     @Test
-    fun `give note then save note verify useCase save note calls`() {
+    fun `give note changed note then save note verify useCase note call `() {
         mainCoroutineRule.runBlockingTest {
             val input = FakeDataUtil.noteUIModel
-            val body = "body"
-            val title = "title"
-            val imageUrl = "https://"
 
-            val expectedCallModel =
-                input.toDomain().copy(description = body, title = title, imageUrl = imageUrl)
+            val expectedCallModel = input.toDomain()
 
             coEvery { useCases.saveNote(any()) } just Runs
 
             viewModel = NoteViewModel(useCases)
             viewModel.note.value = input
 
-            viewModel.saveNote(body, title)
+            viewModel.saveNote(input.title, input.description ?: "")
 
-            coVerify { useCases.saveNote(expectedCallModel) }
+            coVerify(exactly = 0) { useCases.saveNote(expectedCallModel) }
         }
     }
 
@@ -93,9 +89,8 @@ class NoteViewModelTest {
 
             viewModel = NoteViewModel(useCases)
             viewModel.note.value = input
-            viewModel.isEdited = true
 
-            viewModel.saveNote(body, title)
+            viewModel.saveNote(title, body)
 
             coVerify(exactly = 0) { useCases.saveNote(expectedCallModel) }
         }

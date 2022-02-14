@@ -55,6 +55,9 @@ dependencies {
     // Lottie
     implementation lottie.lottie
 
+    // Sheets
+    implementation sheets.option_sheet
+
     // Test
     testImplementation test.coroutines
     testImplementation test.android_test

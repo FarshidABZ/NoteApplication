@@ -40,6 +40,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/noteContentRootView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:clipToPadding="false"
@@ -47,6 +48,11 @@
                     android:padding="@dimen/spacing_4"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/noteImageView">
+
+                    <include
+                        android:id="@+id/getImageView"
+                        app:imageUrl="@{viewModel.noteImageUrl}"
+                        layout="@layout/get_image_url_layout" />
 
                     <EditText
                         android:id="@+id/titleEditText"
@@ -87,8 +93,19 @@
 
                 </LinearLayout>
 
+                <ProgressBar
+                    app:isVisible="@{viewModel.isLoading}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/noteContentRootView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
+
 </layout>

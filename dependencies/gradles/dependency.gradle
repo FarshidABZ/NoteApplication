@@ -60,3 +60,7 @@ ext.glide = [
 ext.lottie = [
         lottie: "com.airbnb.android:lottie:${lottie_version}"
 ]
+
+ext.sheets = [
+        option_sheet : "com.github.Kennyc1012:BottomSheetMenu:${sheets_version}"
+]

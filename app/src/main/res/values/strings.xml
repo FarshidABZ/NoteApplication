@@ -11,5 +11,10 @@
     <string name="title_hint">Title</string>
     <string name="note_hint">Note here…</string>
     <string name="more">more</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="save_and_exit">Save and exit</string>
+    <string name="add_photo">Add photo</string>
+    <string name="add_image_url">Add image url…</string>
 
 </resources>

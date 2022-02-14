@@ -1,41 +1,89 @@
-# NoteApp
+# Farshid Abazari
 
-### Deadline
+# Getir Mobile Assignment
 
-We'll be waiting for your solution within 4 days.
+It's an app built using the MVVM, Repository Pattern and Clean Architecture.
 
-### Goal ###
+## Index
 
-Develop a simple note app that allows the user to save/edit/delete any kind of note and display them in a list.
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Testing Strategy](#testing-strategy)
+- [Libraries](#libraries)
 
-### Functional Requirements ###
+## Key Features
+1. **Separation of Concerns:** The app is built using Uncle Bob's clean architecture (see architecture section below)
+2. **Less management code** left in activities and fragments by using ViewModels and DataBinding
+3. **Dependency manager** Build a module in order to separate all needed dependencies and constants in a reusable module
 
-* Kotlin is preferred but not a must.
-* Users must be able to create notes with input fields such as title, description, image url (input can be optional) and store it locally on their phones.
-* Created note must contain a created date.
-* There must be a way to display all saved notes in the list. An item on the list must contain the created date (dd/mm/yyyy), the image if url is available, title and max. 2 lines of description.
-* There must be a way to edit/delete previously created notes. But edited notes must contain an (edited) tag somewhere while being displayed on the list.
-* All data should be persisted locally.
+## Architecture
+The app is built with scalability in mind. To maintain the separation of concerns, [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by Robert C. Martin, is used. The diagram below shows how the clean architecture is mapped to this android application
 
-### UI Suggestions ###
 
-It doesn't need to be super pretty, but it shouldn't be broken as well. The design is mostly up to you as long as creating, listing and editing/deleting features are available to use.
+### Flow of control:
+Flow of control is one directional only. Any inner layer doesn't know about any layer outside of it. If an inner layer needs to communicate to an outer layer, it is done via Dependency Inversion.
 
-Nice to have:
-* Animations/Transitions
-* At least one custom view
+To maintain this separation over the course of time, separate android/kotlin modules have been used for each layer.
 
-### Expectations ###
 
-Consider this as a showcase of your skills.
-Approach it as if you are going to make a pull request on our main/master branch.
+### Domain Module
 
-We are expecting at least:
-* Clear, defined architecture.
-* Apply the Material Design Guidelines as much as possible.
-* Meaningful tests (You do not need to have 100% coverage, but we will be looking for tests).
-* Good and lint verified syntax.
-* We expect a clear history in the repo. We don't mind your choice of git strategy as long as it has a track of your progress.
-* The repo must be private and should not contain any references to Getir in it.
-* The code must compile.
-* The code must be production ready. Unit tests are expected.
+This is a pure Kotlin module. As such, it is platform independent and can be reused anywhere. Domain module contains:
+
+- **Business Models** - POJOs
+- **Data Source Interfaces** - This definition of data sources allows the app to substitute the DB or remote implementations any time without breaking the logic.
+- **Repositories** - No matter how the data sources are implemented (db, in memory, in-file), Repository has the business logic to choose the right data source for returning the data.
+- **Use Cases** - These represent the user interactions with the system and contain business logic.
+
+Note: Domain is totally unaware about the rest of the system.
+
+### Data Module
+
+Data module contains local data source implementations. It implements all the data source interfaces provided by the domain module.
+
+The data module has separate data models for each data source. It is the responsibility of data module to transform this data to business model before returning it back. This ensures that actual implementation of the data sources can be changed any time without affecting the rest of the system.
+
+
+### Presentation Module
+This module contains all the platform specific, i.e. Android, code. It is responsible for User Interface and handling user actions.
+
+Presentation module is dependent on both domain and data modules. Presentation module has its own UI models but when triggering a use case, presentation module will always use business model objects.
+
+It is the job of presentation module to provide the data module implementations to domain module for business logic execution.
+
+
+## Testing Strategy
+
+The data module has the boundary component of our application, Room Database:
+- DB is tested using **InMemory RoomDB** mock provided by Android.
+
+
+### Testing Libraries:
+- **JUnit4** - Unit testing framework
+- **MockK** - Creating test doubles
+- **InMemory Room DB** - For mocking local database
+- **Google Truth** - For fluent, readable assertions
+- **Turbine** - For easier testing of Kotlin flows.
+
+
+## Libraries
+
+- **Material Design** - UI design
+- **AndroidX** - ViewModel, LiveData
+- **KotlinX** - Coroutines, Flow, StateFlow, Serialization
+- **Hilt** -  Dependency Injection
+- **Navigation Component** - User navigation
+- **Glide** - Loading Images
+- **Room** - Database Storage
+
+
+## Future Enhancements
+These are the enhancements that are important but were left because of time constraints:
+
+### Testing
+1. Test coverage of presentation module such as Fragment and some logics.
+2. Move helper classes and custom components to another sub-module.
+3. Move UI logics from fragment to DataBinding
+4. Better UX to get image url from usr
+5. As we are passing data between fragment, it's possible to implement shared element transition
+
