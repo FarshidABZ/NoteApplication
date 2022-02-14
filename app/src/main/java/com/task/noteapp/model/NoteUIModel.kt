@@ -1,7 +1,10 @@
 package com.task.noteapp.model
 
+import android.os.Parcelable
 import com.farshidabz.domain.entity.NoteModel
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class NoteUIModel(
     val id: Long = 0,
     val title: String,
@@ -9,7 +12,7 @@ data class NoteUIModel(
     val createdTime: Long,
     val lastEditedTime: Long? = null,
     val imageUrl: String? = null
-) {
+) : Parcelable {
     fun toDomain() = NoteModel(id, title, description, createdTime, lastEditedTime, imageUrl)
 }
 

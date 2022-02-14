@@ -6,6 +6,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="false"
         app:cardBackgroundColor="@color/secondaryColor"
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:contentPaddingBottom="@dimen/spacing_2">
@@ -13,50 +14,61 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:orientation="vertical">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/noteImageView"
-                app:shapeAppearanceOverlay="@style/CardRoundedImageView"
                 android:layout_width="match_parent"
-                android:scaleType="centerCrop"
                 android:layout_height="@dimen/note_image_height"
+                android:clickable="false"
                 android:contentDescription="@string/note_image"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/CardRoundedImageView"
                 tools:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:padding="@dimen/spacing_3">
 
                 <com.task.noteapp.customview.NoteTitleTextView
                     android:id="@+id/noteTitleTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:inputType="text"
                     android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Title" />
 
                 <com.task.noteapp.customview.BodyTextViewTextView
                     android:id="@+id/noteBodyTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_1"
-                    android:inputType="text"
+                    android:clickable="false"
                     android:maxLines="2"
-                    android:text="@tools:sample/lorem"
-                    app:layout_constraintTop_toBottomOf="@+id/noteTitleTextView" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/noteTitleTextView"
+                    tools:text="@tools:sample/lorem" />
 
                 <TextView
                     android:id="@+id/createdDateTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_2"
+                    android:clickable="false"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -69,10 +81,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_2"
+                    android:clickable="false"
                     android:text="@string/edited"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="11sp"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/noteBodyTextView"
                     tools:text="17 Jun" />

@@ -17,9 +17,8 @@ class NoteListViewHolder(private val binding: ItemNoteBinding) :
         with(binding) {
             note = item
 
-            root.setOnClickListener { clickListener?.invoke(item) }
-
-            root.setOnLongClickListener {
+            itemView.setOnClickListener { clickListener?.invoke(item) }
+            itemView.setOnLongClickListener {
                 longClickListener?.invoke(item)
                 true
             }

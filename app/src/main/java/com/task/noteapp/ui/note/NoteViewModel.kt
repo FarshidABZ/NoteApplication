@@ -14,9 +14,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NoteViewModel @Inject constructor(private val useCase: NoteUseCase) : ViewModel() {
-    var note= MutableLiveData<NoteUIModel?>()
+    var note = MutableLiveData<NoteUIModel?>()
 
     var isEdited = false
+    var noteImageUrl: String? = null
 
     fun deleteNote() {
         viewModelScope.launch {
@@ -24,26 +25,53 @@ class NoteViewModel @Inject constructor(private val useCase: NoteUseCase) : View
         }
     }
 
-    fun saveNote(noteBody: String, noteTile: String, noteImageUrl: String?) {
-        viewModelScope.launch {
-            useCase.saveNote(getNoteModel(noteBody, noteTile, noteImageUrl))
+    fun saveNote(noteTile: String, noteBody: String) {
+        if (isTitleChanged(noteTile) || isContentChanged(noteBody)) {
+            viewModelScope.launch {
+                useCase.saveNote(getNoteModel(noteTile, noteBody, noteImageUrl))
+            }
         }
     }
 
-    private fun getNoteModel(noteBody: String, noteTile: String, noteImageUrl: String?) =
+    private fun getNoteModel(noteTile: String, noteBody: String, noteImageUrl: String?) =
         NoteModel(
             note.value?.id ?: 0,
             noteTile,
             noteBody,
             getNoteCreateTime(),
-            getNoteLastEditedTime(),
+            getNoteLastEditedTime(noteTile, noteBody),
             noteImageUrl
         )
 
-    private fun getNoteLastEditedTime(): Long? {
-        return if (isEdited) {
+    private fun getNoteLastEditedTime(noteTile: String, noteBody: String) = note.value?.let {
+        if (isContentChanged(noteBody) || isTitleChanged(noteTile)) {
             Calendar.getInstance().timeInMillis
-        } else note.value?.lastEditedTime
+        } else {
+            note.value?.lastEditedTime
+        }
+    }
+
+    private fun isTitleChanged(noteTitle: String) =
+        isAnythingChanged(note.value?.title, noteTitle)
+
+    private fun isContentChanged(noteBody: String) =
+        isAnythingChanged(note.value?.description, noteBody)
+
+    private fun isAnythingChanged(originalSource: String?, sourceToCheck: String): Boolean {
+        originalSource?.let {
+            if (sourceToCheck.isNotEmpty() && sourceToCheck == it) {
+                return false
+            }
+
+            if (sourceToCheck.isEmpty() && it.isEmpty()) {
+                return false
+            }
+
+            return true
+
+        } ?: run {
+            return sourceToCheck.isNotEmpty()
+        }
     }
 
     private fun getNoteCreateTime(): Long {

@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.task.noteapp.R
 import com.task.noteapp.databinding.FragmentNoteListBinding
+import com.task.noteapp.navigation.gotoNoteFragment
 import com.task.noteapp.ui.notelist.adapter.NoteListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,12 +50,23 @@ class NoteListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.noteListRecyclerView.adapter =
-            NoteListAdapter({ noteUIModel -> }, { noteUIModel -> })
+        with(binding.noteListRecyclerView) {
+            adapter = NoteListAdapter({ noteUIModel ->
+                findNavController().gotoNoteFragment(noteUIModel)
+            }, { noteUIModel ->
+                // show bottom sheet menu
+            })
+
+            val animator: RecyclerView.ItemAnimator? = itemAnimator
+            if (animator is SimpleItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
+        }
     }
 
     private fun setupFab() {
         binding.addNewNoteFab.setOnClickListener {
+            findNavController().gotoNoteFragment()
         }
     }
 }

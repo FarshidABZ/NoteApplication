@@ -50,7 +50,7 @@ class NoteViewModelTest {
 
             viewModel = NoteViewModel(useCases)
 
-            viewModel.saveNote("body", "title", null)
+            viewModel.saveNote("title", "body")
 
             coVerify { useCases.saveNote(any()) }
         }
@@ -72,7 +72,7 @@ class NoteViewModelTest {
             viewModel = NoteViewModel(useCases)
             viewModel.note.value = input
 
-            viewModel.saveNote(body, title, imageUrl)
+            viewModel.saveNote(body, title)
 
             coVerify { useCases.saveNote(expectedCallModel) }
         }
@@ -95,7 +95,7 @@ class NoteViewModelTest {
             viewModel.note.value = input
             viewModel.isEdited = true
 
-            viewModel.saveNote(body, title, imageUrl)
+            viewModel.saveNote(body, title)
 
             coVerify(exactly = 0) { useCases.saveNote(expectedCallModel) }
         }
