@@ -22,7 +22,7 @@ object FakeDataUtil {
     )
 
     // 2022/12/25
-    val fakeTimeStamp = 1671973355L
+    val fakeTimeStamp = 1671973355000L
     val fakeTimeStampString = "25/12/2022"
     val fakeTimeStampSimpleString = "25 Dec"
 }
