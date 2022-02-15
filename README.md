@@ -80,9 +80,9 @@ The data module has the boundary component of our application, Room Database:
 
 ## Screenshots
 
-<img src="arts/list.jpeg" width=200>  <img src="arts/list_menu.jpeg" width=200>  <img src="arts/note_with_image.jpeg" width=200> <img src="arts/note_menu.jpeg" width=200>
+<img src="arts/list.jpeg" width=200>  <img src="arts/list_menu.jpeg" width=200>  <img src="arts/detail_with_image.jpeg" width=200> <img src="arts/note_menu.jpeg" width=200>
 
-<img src="arts/screen_record.jpeg" width=360>
+<img src="arts/screen_record.gif" width=360>
 
 
 ## Future Enhancements
