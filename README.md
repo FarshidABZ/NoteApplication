@@ -10,6 +10,7 @@ It's an app built using the MVVM, Repository Pattern and Clean Architecture.
 - [Architecture](#architecture)
 - [Testing Strategy](#testing-strategy)
 - [Libraries](#libraries)
+- [Screenshots](#Screenshots)
 
 ## Key Features
 1. **Separation of Concerns:** The app is built using Uncle Bob's clean architecture (see architecture section below)
@@ -75,6 +76,13 @@ The data module has the boundary component of our application, Room Database:
 - **Navigation Component** - User navigation
 - **Glide** - Loading Images
 - **Room** - Database Storage
+
+
+## Screenshots
+
+<img src="arts/list.jpeg" width=200>  <img src="arts/list_menu.jpeg" width=200>  <img src="arts/note_with_image.jpeg" width=200> <img src="arts/note_menu.jpeg" width=200>
+
+<img src="arts/screen_record.jpeg" width=360>
 
 
 ## Future Enhancements
