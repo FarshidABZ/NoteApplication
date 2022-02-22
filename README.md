@@ -1,6 +1,6 @@
 # Farshid Abazari
 
-# Getir Mobile Assignment
+# Note Mobile Assignment
 
 It's an app built using the MVVM, Repository Pattern and Clean Architecture.
 
